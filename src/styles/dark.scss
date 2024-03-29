@@ -1,0 +1,21 @@
+html.dark {
+  /* 自定义深色背景颜色 */
+  --next-bg-color-main:  #171832;
+  --next-color-white: #ffffff;
+  --next-color-border: #111938;
+  --next-color-primary:#409eff;
+  --next-layout-bg-color: #1b2549;
+  --next-hover-bg-color: #2d4085;
+  --next-color-seting-main: #505050;
+  --next-color-seting-aside: #3c3c3c;
+  --next-color-seting-header: #303030;
+
+
+  .el-scrollbar__wrap {
+    background-color: var(--next-layout-bg-color);
+  }
+
+  body,#app {
+    background-color: var(--next-bg-color-main);
+  }
+}
