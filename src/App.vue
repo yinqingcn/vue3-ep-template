@@ -1,29 +1,45 @@
 <template>
-  <el-config-provider :locale="locale">
+  <el-config-provider :locale="locale === 'zh-CN' ? zhCn : en">
     <keep-alive :include="keepAliveList">
-      <router-view></router-view>
+      <router-view />
     </keep-alive>
   </el-config-provider>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { ElConfigProvider } from 'element-plus'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import { computed, defineComponent, ref, watch } from 'vue';
+import { ElConfigProvider } from 'element-plus';
+import useConfigStore from '@/store/config';
+import { useI18n } from 'vue-i18n';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import en from 'element-plus/es/locale/lang/en';
 export default defineComponent({
   name: 'App',
   components: {
     ElConfigProvider,
   },
   setup() {
+    const store = useConfigStore();
+    const { locale } = useI18n();
+    const language = computed(() => {
+      return store.getLanguage();
+    });
+    watch(
+      () => language.value,
+      (val) => {
+        locale.value = val;
+      }
+    );
     // TODO 这里配置需要缓存的页面
-    const keepAliveList = ref([])
+    const keepAliveList = ref([]);
     return {
-      locale: zhCn,
+      zhCn,
+      en,
+      locale,
       keepAliveList,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped></style>

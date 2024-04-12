@@ -1,23 +1,26 @@
 <template>
   <div class="flex items-center">
-    <div
+    <icon
       v-show="showExpandIcon"
-      class="expand-icon cursor-pointer pt-4px"
+      :icon="isCollapse ? 'ep:expand' : 'ep:fold'"
+      width="20"
+      class="cursor-pointer"
       @click="handleToggleMenuIcon"
-    >
-      <icon type="menu-unfold-one" v-show="!isCollapse" size="24" theme="filled" />
-      <icon type="menu-fold-one" v-show="isCollapse" size="24" theme="filled" />
-    </div>
+    />
     <breadcrumb v-show="showBreadcrumb" :list="breadcrumbList" />
-    <setting class="flex-1" :menu-list="menuList" @changeMenu="handleChangeMenu" />
+    <setting
+      class="flex-1"
+      :menu-list="menuList"
+      @change-menu="handleChangeMenu"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Breadcrumb from './breadcrumb.vue'
-import Setting from './setting.vue'
-import Icon from '@/components/Icon/index.vue'
+import { defineComponent } from 'vue';
+import Breadcrumb from './breadcrumb.vue';
+import Setting from './setting.vue';
+import { Icon } from '@iconify/vue';
 
 export default defineComponent({
   components: { Breadcrumb, Setting, Icon },
@@ -46,17 +49,17 @@ export default defineComponent({
   emits: ['collapse', 'changeMenu'],
   setup(_props, { emit }) {
     const handleToggleMenuIcon = () => {
-      emit('collapse')
-    }
+      emit('collapse');
+    };
     const handleChangeMenu = (value) => {
-      emit('changeMenu', value)
-    }
+      emit('changeMenu', value);
+    };
     return {
       handleToggleMenuIcon,
       handleChangeMenu,
-    }
+    };
   },
-})
+});
 </script>
 
 <style></style>

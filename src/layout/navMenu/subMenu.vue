@@ -1,32 +1,40 @@
 <template>
   <!-- 有子节点渲染这个 -->
-  <el-sub-menu :index="menu.path" v-if="menu?.children">
+  <el-sub-menu v-if="menu?.children" :index="menu.path">
     <template #title>
-      <!-- 需要用el-icon标签包裹起来，否则收起的时候会不显示icon -->
-      <el-icon>
-        <custom-icon :type="menu?.meta.icon" size="16" class="flex items-center mr-8px" />
-      </el-icon>
+      <div class="flex items-center justify-center mr-2">
+        <Icon :icon="menu?.meta.icon" width="24px" height="24px" />
+      </div>
       <!-- 需要用span包裹起来，否则菜单收起来时样式会有问题 -->
-      <span>{{ menu?.meta.title }}</span>
+      <span>{{ t(menu?.meta.title) }}</span>
     </template>
     <!-- 递归调用本身 -->
-    <SubMenu v-for="item in menu.children" :menu="item" :isCollapse="isCollapse" :key="item.key" />
+    <SubMenu
+      v-for="item in menu.children"
+      :key="item.key"
+      :menu="item"
+      :isCollapse="isCollapse"
+    />
   </el-sub-menu>
   <!-- 没有子节点渲染这个 -->
   <el-menu-item v-else :index="menu?.path">
-    <custom-icon :type="menu?.meta.icon" size="16" class="flex items-center mr-8px" />
+    <div class="flex items-center justify-center mr-2">
+      <Icon :icon="menu?.meta.icon" width="24px" height="24px" />
+    </div>
     <template #title
-      ><span>{{ menu?.meta.title }}</span></template
+      ><span>{{ t(menu?.meta.title) }}</span></template
     >
   </el-menu-item>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import customIcon from '@/components/Icon/index.vue'
+import { defineComponent } from 'vue';
+import { Icon } from '@iconify/vue';
+import { useI18n } from 'vue-i18n';
+
 export default defineComponent({
   name: 'SubMenu',
-  components: { customIcon },
+  components: { Icon },
   props: {
     isCollapse: {
       type: Boolean,
@@ -38,9 +46,12 @@ export default defineComponent({
     },
   },
   setup() {
-    return {}
+    const { t } = useI18n();
+    return {
+      t,
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped></style>

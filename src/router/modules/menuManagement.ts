@@ -2,14 +2,13 @@ import BasicLayout from '@/layout/index.vue';
 
 export default [
   {
-    path: '/',
     component: BasicLayout,
-    redirect: '/home',
+    redirect: '/system/menu',
     children: [
       {
-        path: '/home',
-        name: 'Home', // 首页
-        component: () => import('@/views/home/index.vue'),
+        path: '/system/menu',
+        name: 'MenuManagement', // 系统管理-菜单管理
+        component: () => import('@/views/menuManagement/index.vue'),
         meta: {
           icon: 'vue',
         },

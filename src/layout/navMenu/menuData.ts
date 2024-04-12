@@ -3,29 +3,29 @@ const menu = [
     key: '1',
     path: '/home',
     meta: {
-      title: '首页',
-      icon: 'home',
+      title: 'home', // 首页
+      icon: 'ic:round-home',
     },
   },
   {
     key: '2',
-    path: '/funcion_list',
+    path: '/system',
     meta: {
-      title: '功能',
-      icon: 'multi-function-knife',
+      title: 'systemManagement', // 系统管理
+      icon: 'ic:outline-lock',
     },
     children: [
       {
         key: '2-1',
         parentKey: '2',
-        path: '/function_list/tags_oparate',
+        path: '/system/menu',
         meta: {
-          title: 'TagsView操作说明',
-          icon: 'tag',
+          title: 'menuManagement', // 菜单管理
+          icon: 'ep:tag',
         },
       },
     ],
   },
-]
+];
 
-export default menu
+export default menu;

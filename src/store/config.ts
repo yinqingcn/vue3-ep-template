@@ -1,29 +1,33 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from 'pinia';
+import { ref } from 'vue';
 
+// Setup Store方式
 const useConfigStore = defineStore('app-config', () => {
   const defaultSetting = ref({
     layout: 'defaults',
-    showSidebarLogo: false,
-    showBreadcrumb: false,
-    showBreadcrumbIcon: false,
-    showTagsview: false,
-    showTagsviewIcon: false,
-    showWatermark: false,
-    watermarkText: 'z-app-admin'
+    language: 'zh-CN',
   });
 
   const setSetting = (setting: any) => {
-    defaultSetting.value = setting
-  }
+    defaultSetting.value = setting;
+  };
+  const setLanguage = (language: string) => {
+    defaultSetting.value.language = language;
+  };
+  const getLanguage = () => {
+    return defaultSetting.value.language;
+  };
+
   const getSetting = () => {
-    return defaultSetting.value
-  }
+    return defaultSetting.value;
+  };
 
   return {
     getSetting,
-    setSetting
-  }
-})
+    setSetting,
+    setLanguage,
+    getLanguage,
+  };
+});
 
-export default useConfigStore
+export default useConfigStore;

@@ -15,8 +15,8 @@
     <template #default="{ node }">
       <div class="flex items-center">
         <div class="inline-block">
-          <custom-icon
-            :type="node?.data?.meta?.icon"
+          <Icon
+            :icon="node?.data?.meta?.icon"
             size="16"
             class="inline-block mr-8px mt-2px"
           />
@@ -28,12 +28,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
-import { cloneDeep } from 'lodash-es'
-import customIcon from '@/components/Icon/index.vue'
+import { defineComponent, ref, computed } from 'vue';
+import { cloneDeep } from 'lodash-es';
+import { Icon } from '@iconify/vue';
 export default defineComponent({
   name: 'SearchMenu',
-  components: { customIcon },
+  components: { Icon },
   props: {
     menuList: {
       type: Array,
@@ -42,57 +42,59 @@ export default defineComponent({
   },
   emits: ['searchMenu'],
   setup(props, { emit }) {
-    const value = ref('')
-    const treeSelectRef = ref()
+    const value = ref('');
+    const treeSelectRef = ref();
     const formatTree = (list) => {
       list.forEach((item) => {
-        item.label = item.meta.title
+        item.label = item.meta.title;
         if (item.children && item.children.length) {
-          formatTree(item.children)
+          formatTree(item.children);
         }
-      })
-      return list
-    }
+      });
+      return list;
+    };
     const menuTree = computed(() => {
-      return formatTree(cloneDeep(props.menuList))
-    })
+      return formatTree(cloneDeep(props.menuList));
+    });
     const getReturnNode = (node, _array, value) => {
       let isPass =
         (node.data &&
           node.data.label &&
-          node.data.label.toUpperCase().indexOf(value.toUpperCase().trim()) !== -1) ||
+          node.data.label.toUpperCase().indexOf(value.toUpperCase().trim()) !==
+            -1) ||
         (node.data &&
           node.data.path &&
-          node.data.path.toUpperCase().indexOf(value.toUpperCase().trim()) !== -1)
-      isPass ? _array.push(isPass) : ''
+          node.data.path.toUpperCase().indexOf(value.toUpperCase().trim()) !==
+            -1);
+      isPass ? _array.push(isPass) : '';
       if (!isPass && node.level != 1 && node.parent) {
-        getReturnNode(node.parent, _array, value)
+        getReturnNode(node.parent, _array, value);
       }
-    }
+    };
     const filterNode = (value, data, node) => {
       if (!value) {
-        return true
+        return true;
       }
-      let _array = [] //这里使用数组存储 只是为了存储值。
-      getReturnNode(node, _array, value)
-      let result = false
+      let _array = []; //这里使用数组存储 只是为了存储值。
+      getReturnNode(node, _array, value);
+      let result = false;
       _array.forEach((item) => {
-        result = result || item
-      })
-      return result
-    }
+        result = result || item;
+      });
+      return result;
+    };
     const handleSelectMenu = (value) => {
-      emit('searchMenu', value)
-    }
+      emit('searchMenu', value);
+    };
     return {
       value,
       treeSelectRef,
       menuTree,
       filterNode,
       handleSelectMenu,
-    }
+    };
   },
-})
+});
 </script>
 
 <style lang="scss" scoped></style>

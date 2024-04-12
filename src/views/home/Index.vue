@@ -1,14 +1,16 @@
 <template>
-  <div>首页</div>
+  <div class="container">
+    {{ t('title') }}
+  </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
 
-export default defineComponent({
-  name: 'Home',
-  props: {},
-  setup() {
-    return {}
-  },
-})
+const { t } = useI18n();
 </script>
+<i18n>
+  zh-CN:
+    title: 菜单管理
+  en:
+    title: Menu Management
+</i18n>

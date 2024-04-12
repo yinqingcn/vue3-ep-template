@@ -1,20 +1,7 @@
-## 本项目是一个vue3+ts+element-plus的项目模板
-### 说明：
-#### 1.项目基于vue3+ts+element-plus+pinia，icon使用的是inconpark,后续会出一个完整的项目模板，包含各种布局切换、自定义主题、增加水印等功能
-### 1.项目启动
+# Vue 3 + Vite
 
-```bash
-# 安装依赖
-yarn 
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-# 启动项目
-yarn dev
-```
-### 2. 项目打包
-```bash
-# 打包
-yarn build
+## Recommended IDE Setup
 
-# 打包后预览
-yarn preview
-```
+- [VS Code](https://code.visualstudio.com/) + [Vue - Official](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (previously Volar) and disable Vetur

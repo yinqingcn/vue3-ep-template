@@ -1,17 +1,14 @@
-import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { defineStore } from 'pinia';
 
-const useDemoStore = defineStore('app-user', () => {
-  const counter = ref(0)
-
-  const increment = () => {
-    counter.value++
-  }
-
-  return {
-    counter,
-    increment,
-  }
-})
-
-export default useDemoStore
+// Options Store方式
+export const useUserStore = defineStore('user', {
+  state: () => ({ count: 0 }),
+  getters: {
+    double: (state) => state.count * 2,
+  },
+  actions: {
+    increment() {
+      this.count++;
+    },
+  },
+});

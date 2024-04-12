@@ -1,13 +1,15 @@
 <template>
   <el-breadcrumb separator="/">
     <el-breadcrumb-item v-for="item in list" :key="item.key">{{
-      item.meta.title
+      t(item.meta.title)
     }}</el-breadcrumb-item>
   </el-breadcrumb>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
+
 export default defineComponent({
   props: {
     list: {
@@ -16,9 +18,12 @@ export default defineComponent({
     },
   },
   setup() {
-    return {}
+    const { t } = useI18n();
+    return {
+      t,
+    };
   },
-})
+});
 </script>
 
 <style></style>

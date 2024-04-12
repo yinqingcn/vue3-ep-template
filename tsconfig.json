@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    // vite/client:扩展 Vue.js 官方提供的 TypeScript 默认配置集,否则 如果在路由那里使用import.meta.glob会有警告
+    "types": ["vite/client", "node", "jest"],
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types/",
+      "@intlify/unplugin-vue-i18n/messages"
+    ],
+    // 指定输出代码的目标 ECMAScript 版本，这里设置为最新版本
+    "target": "esnext",
+    // 指定模块系统，这里是 ES 模块（ESM）
+    "module": "esnext",
+    // 启用严格模式，包括启用严格类型检查和禁用某些不安全的操作
+    "strict": true,
+    // 指定 JSX 处理方式，"preserve" 表示原样保留 JSX 语法
+    "jsx": "preserve",
+    // 导入 helper 函数来减少打包体积
+    "importHelpers": true,
+    // 指定模块解析策略，采用 Node.js 的模块解析规则
+    "moduleResolution": "node",
+    // 跳过对声明文件（.d.ts）的类型检查
+    "skipLibCheck": true,
+    // 允许 CommonJS 模块导入默认导出，与 ES 模块交互更平滑
+    "esModuleInterop": true,
+    // 强制文件名大小写一致性，确保引用文件时大小写与实际文件名完全相同
+    "forceConsistentCasingInFileNames": true,
+    // 允许从 CommonJS 模块中导入默认成员，即使没有明确的 default export
+    "allowSyntheticDefaultImports": true,
+    // 启用实验性的装饰器特性支持，这对于使用类组件和Vuex等框架非常有用
+    "experimentalDecorators": true,
+    // 允许 TypeScript 解析 JSON 文件
+    "resolveJsonModule": true,
+    // 当设置为 true 时，每个文件都会被视为一个独立的模块，这对于 Vite 这样的按需编译工具很关键
+    "isolatedModules": true,
+    // 在 Vite 环境下，不需要 TypeScript 编译器直接生成输出文件，因为 Vite 会负责编译过程
+    "noEmit": true,
+    // 报告未使用的局部变量
+    "noUnusedLocals": true,
+    // 报告未使用的函数参数
+    "noUnusedParameters": true,
+    // 设置基准目录，用于计算“非相对”的模块导入路径
+    "baseUrl": ".",
+    // 自定义路径映射，比如设置 '@' 别名指向 'src/' 目录，方便模块导入
+    "paths": {
+      "@/*": ["src/*"]
+      // 其他自定义别名...
+    }
+  },
+  // 指定 TypeScript 编译器要包含的文件，通常包括源码、类型声明文件及 Vue 单文件组件等
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "vite.config.ts"
+  ],
+  // 指定 TypeScript 编译器要忽略的文件或目录，通常排除 node_modules 和构建产出目录
+  "exclude": ["node_modules", "dist", "**/*.js"]
+}

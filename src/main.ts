@@ -1,21 +1,20 @@
-import { createApp } from 'vue'
-import './styles/base.scss'
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-import 'virtual:windi-utilities.css'
-import App from './App.vue'
-import router from './router'
-import { createPinia } from 'pinia'
-// element-plus 图标全部引入
-// import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import { createApp } from 'vue';
+import './styles/base.scss';
+import 'virtual:uno.css';
+import App from './App.vue';
+import router from './router';
+import { createPinia } from 'pinia';
+import 'element-plus/theme-chalk/dark/css-vars.css';
+import './styles/dark.scss';
+import { createI18n } from 'vue-i18n';
+import messages from '@intlify/unplugin-vue-i18n/messages';
 
-import 'element-plus/theme-chalk/dark/css-vars.css'
-import './styles/dark.scss'
-
-const app = createApp(App)
-// for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-//   app.component(key, component)
-// }
-app.use(createPinia())
-app.use(router)
-app.mount('#app')
+const i18n = createI18n({
+  locale: 'zh-CN',
+  messages,
+});
+const app = createApp(App);
+app.use(createPinia());
+app.use(router);
+app.use(i18n);
+app.mount('#app');
