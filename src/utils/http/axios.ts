@@ -35,7 +35,7 @@ axios.interceptors.request.use(
     config.headers['timestamp'] = new Date().getTime();
     return config;
   },
-  (error: any) => Promise.reject(error)
+  (error: any) => Promise.reject(error),
 );
 const WHITE_URL_LIST = ['/test'];
 axios.interceptors.response.use(
@@ -83,7 +83,7 @@ axios.interceptors.response.use(
       code: error.response?.status,
       message: error.response?.statusText || error.message,
     });
-  }
+  },
 );
 
 export default axios;
@@ -91,14 +91,14 @@ export default axios;
 export function get<T = any, D = any>(
   url: string,
   params?: D,
-  config?: AxiosRequestConfig<D>
+  config?: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   const localConfig = config ? config : ({} as AxiosRequestConfig<D>);
   if (params) {
     localConfig.params = Object.assign(
       {},
       localConfig.params ? localConfig.params : {},
-      params
+      params,
     );
   }
   return axios
@@ -109,7 +109,7 @@ export function get<T = any, D = any>(
 export function post<T = any, D = any>(
   url: string,
   data?: D,
-  config?: AxiosRequestConfig<D>
+  config?: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   return axios
     .post<HttpResponse<T>>(url, data, config)
@@ -119,7 +119,7 @@ export function post<T = any, D = any>(
 export function put<T = any, D = any>(
   url: string,
   data?: D,
-  config?: AxiosRequestConfig<D>
+  config?: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   return axios
     .put<HttpResponse<T>>(url, data, config)
@@ -129,7 +129,7 @@ export function put<T = any, D = any>(
 export function patch<T = any, D = any>(
   url: string,
   data?: D,
-  config?: AxiosRequestConfig<D>
+  config?: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   return axios
     .patch<HttpResponse<T>>(url, data, config)
@@ -138,7 +138,7 @@ export function patch<T = any, D = any>(
 
 export function del<T = any, D = any>(
   url: string,
-  config?: AxiosRequestConfig<D>
+  config?: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   return axios
     .delete<HttpResponse<T>>(url, config)
@@ -146,7 +146,7 @@ export function del<T = any, D = any>(
 }
 
 export function request<T = any, D = any>(
-  config: AxiosRequestConfig<D>
+  config: AxiosRequestConfig<D>,
 ): Promise<HttpResponse<T>> {
   return axios
     .request<HttpResponse<T>>(config)
@@ -179,7 +179,7 @@ const download = (url: string, responseType: ResponseType = 'arraybuffer') =>
 const downloadWidthParam = (
   url: string,
   data: any,
-  responseType: ResponseType = 'blob'
+  responseType: ResponseType = 'blob',
 ) =>
   axios({
     url,

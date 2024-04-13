@@ -28,7 +28,7 @@ export default defineComponent({
       () => language.value,
       (val) => {
         locale.value = val;
-      }
+      },
     );
     // TODO 这里配置需要缓存的页面
     const keepAliveList = ref([]);
