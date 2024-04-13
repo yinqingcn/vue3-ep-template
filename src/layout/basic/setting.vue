@@ -29,7 +29,7 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item command="zh-CN" :disabled="language === 'zh-CN'">
+          <el-dropdown-item command="zh-cn" :disabled="language === 'zh-cn'">
             简体中文
           </el-dropdown-item>
           <el-dropdown-item command="en" :disabled="language === 'en'">
@@ -93,7 +93,7 @@ export default defineComponent({
   setup(_props, { emit }) {
     const store = useConfigStore();
     const { t } = useI18n();
-    const language = ref('zh-CN');
+    const language = ref('zh-cn');
     const handleChangeLanguage = (command: string) => {
       language.value = command;
       store.setLanguage(command);
@@ -129,7 +129,7 @@ export default defineComponent({
 
 <style lang="scss" scoped></style>
 <i18n>
-  zh-CN:
+  zh-cn:
     searchMenu: 搜索菜单
     dark: 暗黑模式
     light: 明亮模式

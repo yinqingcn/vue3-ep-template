@@ -9,7 +9,7 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 </script>
 <i18n>
-  zh-CN:
+  zh-cn:
     title: 菜单管理
   en:
     title: Menu Management

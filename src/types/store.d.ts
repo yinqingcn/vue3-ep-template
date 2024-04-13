@@ -1,5 +1,5 @@
 declare interface SystemStore {
-  locale: 'zh-CN' | 'en-US' | null;
+  locale: 'zh-cn' | 'en' | null;
   menuCollapsed: null | boolean;
   theme: null | 'light' | 'dark';
 }

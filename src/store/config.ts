@@ -5,7 +5,7 @@ import { ref } from 'vue';
 const useConfigStore = defineStore('app-config', () => {
   const defaultSetting = ref({
     layout: 'defaults',
-    language: 'zh-CN',
+    language: 'zh-cn',
   });
 
   const setSetting = (setting: any) => {

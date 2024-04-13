@@ -72,6 +72,16 @@ module.exports = {
     ],
 
     'vue/html-closing-bracket-newline': 'off',
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'only-multiline',
+        objects: 'only-multiline',
+        imports: 'only-multiline',
+        exports: 'only-multiline',
+        functions: 'ignore',
+      },
+    ],
   },
   // eslint不能对html文件生效
   overrides: [

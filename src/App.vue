@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider :locale="locale === 'zh-CN' ? zhCn : en">
+  <el-config-provider :locale="locale === 'zh-cn' ? zhCn : en">
     <keep-alive :include="keepAliveList">
       <router-view />
     </keep-alive>
