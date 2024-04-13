@@ -21,9 +21,9 @@
     <div class="flex items-center justify-center mr-2">
       <Icon :icon="menu?.meta.icon" width="24px" height="24px" />
     </div>
-    <template #title
-      ><span>{{ t(menu?.meta.title) }}</span></template
-    >
+    <template #title>
+      <span>{{ t(menu?.meta.title) }}</span>
+    </template>
   </el-menu-item>
 </template>
 

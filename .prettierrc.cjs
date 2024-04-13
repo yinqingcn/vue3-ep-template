@@ -28,7 +28,7 @@ module.exports = {
   // 缩进空格数，默认2个空格
   tabWidth: 2,
   // 元素末尾是否加逗号，默认es5: ES5中的 objects, arrays 等会添加逗号，TypeScript 中的 type 后不加逗号
-  trailingComma: 'all',
+  trailingComma: 'es5',
   // 指定缩进方式，空格或tab，默认false，即使用空格
   useTabs: false,
   // vue 文件中是否缩进 <style> 和 <script> 标签，默认 false

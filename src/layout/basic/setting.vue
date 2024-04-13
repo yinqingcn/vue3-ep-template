@@ -40,7 +40,9 @@
     </el-dropdown>
 
     <el-avatar :size="30" class="mr-4">
-      <template #default> user </template>
+      <template #default>
+        {{ 'user' }}
+      </template>
     </el-avatar>
     <el-dropdown>
       <span>
